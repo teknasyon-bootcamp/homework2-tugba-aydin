@@ -15,7 +15,11 @@
  * istiyoruz. Ek olarak, `getRandomPostCount` isminde bir fonksiyon tanımlamanızı
  * bekliyoruz. Bununla ilgili detaylı bilgi diğer betiklerde yer alıyor.
  */
-
+if ( realpath(__FILE__) == realpath( $_SERVER['SCRIPT_FILENAME'] ) ) {
+	header( 'HTTP/1.0 403 Forbidden', TRUE, 403 );
+	echo "izinsiz giriş "; 
+	exit();
+}
 function getLatestPosts($count = 5)
 {
     $posts = [];
@@ -48,4 +52,8 @@ EOT;
 }
 
 // Aşağıya fonksiyonu tanımlayabilirsiniz.
-
+function getRandomPostCount($min,$max){
+        $random=rand($min, $max);
+        return $random;
+  
+}
